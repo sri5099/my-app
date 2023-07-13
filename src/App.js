@@ -94,12 +94,14 @@ function CartItemsSelectionPage() {
           <div className="item" key={item.id} style={{alignContent:'space-around', alignItems: 'center', display: 'flex', flexDirection: 'row', justifyContent:'space-between', padding: 10}}>
             <h3 style={{fontWeight:'bold'}}>{item.title}</h3>
             <p style={{color:'gray'}}>₹{item.price}</p>
-            <div className="quantity" style={{ alignContent:'center', alignItems: 'center', display:'flex', justifyContent:'space-between', width: 40}}>
+            <div style={{ borderWidth:2, color: '#e64b17',borderStyle:'solid', padding: 10, justifyContent:'center',alignItems:'center',display:'flex', width: 60, alignContent:'center'}}> 
+            <div className="quantity" style={{ alignContent:'center', alignItems: 'center', display:'flex', justifyContent:'space-between', width: 60}}>
              {cartItems.find(cartItem => cartItem.id === item.id)?.quantity? <button className="remove" onClick={() => removeItem(item.id)}>-</button>: null}
-              <span>{cartItems.find(cartItem => cartItem.id === item.id)?.quantity || 'ADD'}</span>
+              <span onClick={() => addItem(item.id)}  >{cartItems.find(cartItem => cartItem.id === item.id)?.quantity || 'ADD'}</span>
 
-             {cartItems.find(cartItem => cartItem.id === item.id)?.quantity? <button className="add" onClick={() => removeItem(item.id)}>-</button>: null}
-              <button className="add" onClick={() => addItem(item.id)}>+</button>
+             {cartItems.find(cartItem => cartItem.id === item.id)?.quantity? <button className="add" onClick={() => addItem(item.id)}>+</button>: null}
+              {/* <button className="add" onClick={() => addItem(item.id)}>+</button> */}
+            </div>
             </div>
           </div>
         ))}
